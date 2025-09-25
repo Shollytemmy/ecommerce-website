@@ -25,7 +25,7 @@ export const createCheckoutSession = async (cartId: string) => {
   const response = await fetch("https://api.paystack.co/transaction/initialize", {
     method: "POST",
     headers: {
-      Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEYS}`,
+      Authorization: `Bearer ${process.env.PAYSTACK_SECRET_KEY}`,
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
