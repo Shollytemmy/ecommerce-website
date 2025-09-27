@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint src --ext .ts,.tsx,.js,.jsx"
+    "lint": "eslint src --ext .ts,.tsx,.js,.jsx",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@oslojs/crypto": "^1.0.1",
