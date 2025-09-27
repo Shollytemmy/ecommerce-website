@@ -18,7 +18,15 @@ const eslintConfig = [
       "out/**",
       "build/**",
       "next-env.d.ts",
+      "src/generated/**", // 🚀 Ignore Prisma generated files
     ],
+  },
+
+  // Disable explicit-any rule globally:
+  {
+    rules: {
+      "@typescript-eslint/no-explicit-any": "off",
+    },
   },
 ];
 

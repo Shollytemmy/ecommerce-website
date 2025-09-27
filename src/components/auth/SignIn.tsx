@@ -1,25 +1,25 @@
 'use client';
-import React, { useActionState } from 'react'
-import Form from 'next/form'
+
+import React, { useActionState } from 'react';
+import Form from 'next/form';
 import { Loader2 } from 'lucide-react';
 
-type SignInProps = {
-  action: (prevState: any, formData: FormData) => Promise<{ message: string } | undefined>
-}
-
 const initialState = {
-  message: ''
-}
+    message: '',
+};
 
+type SignInProps = {
+    action: (prevState: any, formData: FormData) => Promise<{ message: string } | undefined>;
+};
 
-function SignIn({ action }: SignInProps) {
-  
-  const [state, formAction, isPending] = useActionState(action, initialState)
-  return (
-    <Form action={formAction} className='max-w-md mx-auto my-16 p-8 bg-white rounded-lg shadow-md'>
-            <h1 className='text-2xl font-bold text-center mb-2'>WELCOME BACK!</h1>
-            <p className='text-center text-sm text-rose-600 font-semibold mb-2'>🔥 MEMBERS EXCLUSIVE 🔥</p>
-            <p className='text-center text-sm text-gray-600 mb-6'>Sign in to access your exclusive member deals!</p>
+const SignIn = ({ action }: SignInProps) => {
+    const [state, formAction, isPending] = useActionState(action, initialState);
+
+    return (
+        <Form action={formAction} className='max-w-md mx-auto my-16 p-8 bg-white rounded-lg shadow-md'>
+            <h1 className='text-2xl font-bold text-center mb-2'>Welcome Back!</h1>
+            <p className='text-center text-sm text-rose-600 font-semibold mb-2'>🔥 MEMBER EXCLUSIVE 🔥</p>
+            <p className='text-center text-sm text-gray-600 mb-6'>Sign in to access your exclusive member deals.</p>
 
             <div className='space-y-6'>
                 {/* Email */}
@@ -47,6 +47,7 @@ function SignIn({ action }: SignInProps) {
                         type='password'
                         id='password'
                         name='password'
+                        autoComplete='new-password'
                         required
                         className='w-full px-4 py-3 border border-gray-200 rounded-md focus:ring-2 focus:ring-black focus:border-transparent transition-colors'
                         placeholder='Create a password'
@@ -55,8 +56,8 @@ function SignIn({ action }: SignInProps) {
 
                 {/* Copywriting */}
                 <div className='text-center'>
-                    <p className='text-xs text-gray-500 mb-2'>⚡️ Member save an extra 50% on all orders. !</p>
-                    <p className='text-xs text-gray-500 mb-4'>📢 Plug gets free shipping on order over $50.00 </p>
+                    <p className='text-xs text-gray-500 mb-2'>⚡️ Members save an extra 15% on all orders!</p>
+                    <p className='text-xs text-gray-500 mb-4'>🛍️ Plug get free shipping on orders over $15.00</p>
                 </div>
 
                 {/* Submit Button */}
@@ -82,7 +83,7 @@ function SignIn({ action }: SignInProps) {
                 )}
             </div>
         </Form>
-  )
-}
+    );
+};
 
-export default SignIn
+export default SignIn;

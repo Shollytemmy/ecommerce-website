@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Header from "./components/layout/Header";
+import Header from "../components/layout/Header";
 import { getCurrentSession } from "@/actions/auth";
 import { User } from '../generated/prisma/index';
 import { SanityLive } from "@/sanity/lib/live";
-import HeaderCategorySelector from "./components/layout/HeaderCategorySelector";
-import Cart from "./components/Cart/Cart";
+import HeaderCategorySelector from "../components/layout/HeaderCategorySelector";
+import Cart from "../components/Cart/Cart";
 
 const interFont = Inter({subsets: ['latin']})
 

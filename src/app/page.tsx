@@ -1,8 +1,8 @@
 import { getCurrentSession } from "@/actions/auth";
 import { getAllProducts } from "@/sanity/lib/client";
 import Image from "next/image";
-import SalesCampaignBanner from "./components/layout/SalesCampaignBanner";
-import ProductGrid from "./components/product/ProductGrid";
+import SalesCampaignBanner from "../components/layout/SalesCampaignBanner";
+import ProductGrid from "../components/product/ProductGrid";
 
 
 export default async function Home() {

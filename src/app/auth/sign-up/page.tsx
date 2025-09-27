@@ -1,6 +1,6 @@
 
 import { getCurrentSession, loginUser, registerUser } from '@/actions/auth'
-import SignUp from "@/app/components/auth/SignUp"
+import SignUp from "@/components/auth/SignUp"
 import { redirect } from 'next/navigation'
 import React from 'react'
 import zod from 'zod'

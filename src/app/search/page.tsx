@@ -1,8 +1,8 @@
 
 import { getCategoryBySlug, getProductsByCategorySlug, searchProducts } from '@/sanity/lib/client';
 import React from 'react';
-import SalesCampaignBanner from '../components/layout/SalesCampaignBanner';
-import ProductGrid from '../components/product/ProductGrid';
+import SalesCampaignBanner from '../../components/layout/SalesCampaignBanner';
+import ProductGrid from '../../components/product/ProductGrid';
 
 type SearchPageProps = {
     searchParams: Promise<{ query: string }>;

@@ -1,5 +1,5 @@
-import SalesCampaignBanner from "@/app/components/layout/SalesCampaignBanner";
-import ProductGrid from "@/app/components/product/ProductGrid";
+import SalesCampaignBanner from "@/components/layout/SalesCampaignBanner";
+import ProductGrid from "@/components/product/ProductGrid";
 import { getCategoryBySlug, getProductsByCategorySlug } from "@/sanity/lib/client";
 
 

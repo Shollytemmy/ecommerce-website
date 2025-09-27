@@ -1,5 +1,5 @@
-import SalesCampaignBanner from '@/app/components/layout/SalesCampaignBanner';
-import AddToCartButton from '@/app/components/product/AddToCartButton';
+import SalesCampaignBanner from '@/components/layout/SalesCampaignBanner';
+import AddToCartButton from '@/components/product/AddToCartButton';
 import { formatPrice } from '@/lib/utils';
 import { getProductById } from '@/sanity/lib/client';
 import { urlFor } from '@/sanity/lib/image';
