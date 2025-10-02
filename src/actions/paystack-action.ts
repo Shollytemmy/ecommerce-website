@@ -31,6 +31,7 @@ export const createCheckoutSession = async (cartId: string) => {
     body: JSON.stringify({
       email: user?.email|| 'guest@test.com',
       amount: Math.round(totalPrice * 100),
+       currency: "NGN",
       callback_url: `${process.env.NEXT_PUBLIC_BASE_URL}/checkout/success`,
       metadata: {
         cartId: cart.id,
