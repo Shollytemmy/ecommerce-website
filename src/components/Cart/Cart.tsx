@@ -1,11 +1,80 @@
 'use client';
 import { createCheckoutSession } from "@/actions/paystack-action";
 import { formatPrice } from "@/lib/utils";
-import { useCartStore } from "@/stores/cart-stores";
+import { useCartStore, type CartItem as CartItemType } from "@/stores/cart-stores";
 import { Loader2, ShoppingCart, X } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { useShallow } from 'zustand/shallow'
+import Image from "next/image";
+
+// CartItem Components
+
+const CartItem = ({ item }: { item: CartItemType }) => {
+    const { removeItem, updateQuantity } = useCartStore(
+        useShallow((state) => ({
+            removeItem: state.removeItem,
+            updateQuantity: state.updateQuantity,
+        }))
+    );
+
+    const isFreeItem = item.price === 0;
+
+    return (
+        <div key={`cart-item-${item.id}`} className='flex gap-4 p-4 hover:bg-gray-50'>
+            <div className='relative w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 border'>
+                <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className='object-cover'
+                />
+            </div>
+
+            <div className='flex-1 min-w-0'>
+                <h3 className='font-medium text-gray-900 truncate'>
+                    {item.title}
+                </h3>
+                <div className='text-sm text-gray-500 mt-1'>
+                    {isFreeItem ? (
+                        <span className='text-emerald-600 font-medium'>FREE</span>
+                    ) : (
+                        formatPrice(item.price)
+                    )}
+                </div>
+                <div className='flex items-center gap-3 mt-2'>
+                    {isFreeItem ? (
+                        <div className='text-sm text-emerald-600 font-medium'>
+                            Prize Item
+                        </div>
+                    ) : (
+                        <>
+                            <select
+                                value={item.quantity}
+                                onChange={(e) => updateQuantity(item.id, Number(e.target.value))}
+                                className='border rounded-md px-2 py-1 text-sm bg-white'
+                            >
+                                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
+                                    <option key={`cart-qty-slct-${item.id}-${num}`} value={num}>
+                                        {num}
+                                    </option>
+                                ))}
+                            </select>
+                            <button
+                                onClick={() => removeItem(item.id)}
+                                className='text-red-500 text-sm hover:text-red-600'
+                            >
+                                Remove
+                            </button>
+                        </>
+                    )}
+                </div>
+            </div>
+        </div>
+    )
+}
+
+
 const Cart = () => {
     const { cartId, items, close, isOpen, syncWithUser, setLoaded, getTotalPrice, getTotalItems } = useCartStore(
         useShallow((state) => ({
@@ -126,9 +195,9 @@ const Cart = () => {
                             </div>
                         ) : (
                             <div className='divide-y'>
-                                {/* {items.map((item) => (
+                                {items.map((item) => (
                                     <CartItem key={'cart-item-'+item.id} item={item} />
-                                ))} */}
+                                ))}
                             </div>
                         )}
                     </div>
